@@ -4,4 +4,6 @@ use std::path::PathBuf;
 fn main() {
     let mut x = PathBuf::from("/foo");
     x.push("bar");
+
+    let x = PathBuf::from("/foo").join("bar");
 }

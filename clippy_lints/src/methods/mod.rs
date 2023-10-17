@@ -4141,6 +4141,7 @@ impl Methods {
                     if let Some(("collect", _, _, span, _)) = method_call(recv) {
                         unnecessary_join::check(cx, expr, recv, join_arg, span);
                     }
+                    path_buf_push_overwrite::check(cx, expr, join_arg);
                 },
                 ("last", []) => {
                     if let Some(("cloned", recv2, [], _span2, _)) = method_call(recv) {

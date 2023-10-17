@@ -7,5 +7,11 @@ LL |     x.push("/bar");
    = note: `-D clippy::path-buf-push-overwrite` implied by `-D warnings`
    = help: to override `-D warnings` add `#[allow(clippy::path_buf_push_overwrite)]`
 
-error: aborting due to previous error
+error: calling `push` with '/' or '\' (file system root) will overwrite the previous path definition
+  --> $DIR/path_buf_push_overwrite.rs:8:40
+   |
+LL |     let x = PathBuf::from("/foo").join("/bar");
+   |                                        ^^^^^^ help: try: `"bar"`
+
+error: aborting due to 2 previous errors
 
