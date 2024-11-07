@@ -29,6 +29,8 @@ mod popular_crates;
 mod recursive;
 
 use crate::config::{Commands, LintcheckConfig, OutputFormat};
+use crate::input::read_crates;
+use crate::output::{ClippyCheckOutput, ClippyWarning, RustcIce};
 use crate::recursive::LintcheckServer;
 
 use std::env::consts::EXE_SUFFIX;
@@ -39,8 +41,6 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 use std::{env, fs};
 
 use cargo_metadata::Message;
-use input::read_crates;
-use output::{ClippyCheckOutput, ClippyWarning, RustcIce};
 use rayon::prelude::*;
 
 const LINTCHECK_DOWNLOADS: &str = "target/lintcheck/downloads";

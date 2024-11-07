@@ -5,11 +5,11 @@
 
 #![warn(rust_2018_idioms, unused_lifetimes)]
 
+use crate::test_utils::IS_RUSTC_TEST_SUITE;
 use itertools::Itertools;
 use std::io::{self, IsTerminal};
 use std::path::PathBuf;
 use std::process::Command;
-use test_utils::IS_RUSTC_TEST_SUITE;
 use ui_test::Args;
 
 mod test_utils;

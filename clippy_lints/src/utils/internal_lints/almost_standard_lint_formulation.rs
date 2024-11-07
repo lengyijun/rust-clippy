@@ -1,6 +1,6 @@
+use crate::regex::Regex;
 use crate::utils::internal_lints::lint_without_lint_pass::is_lint_ref_type;
 use clippy_utils::diagnostics::span_lint_and_help;
-use regex::Regex;
 use rustc_ast as ast;
 use rustc_hir::{Item, ItemKind, Mutability};
 use rustc_lint::{LateContext, LateLintPass};

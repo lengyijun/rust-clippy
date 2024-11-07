@@ -1,6 +1,6 @@
+use crate::test_utils::{CARGO_CLIPPY_PATH, IS_RUSTC_TEST_SUITE};
 use std::path::PathBuf;
 use std::process::Command;
-use test_utils::{CARGO_CLIPPY_PATH, IS_RUSTC_TEST_SUITE};
 
 mod test_utils;
 

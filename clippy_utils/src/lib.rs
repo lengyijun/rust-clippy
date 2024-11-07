@@ -89,6 +89,7 @@ use std::hash::BuildHasherDefault;
 use std::iter::{once, repeat};
 use std::sync::{Mutex, MutexGuard, OnceLock};
 
+use crate::visitors::Visitable;
 use clippy_config::types::DisallowedPath;
 use itertools::Itertools;
 use rustc_ast::ast::{self, LitKind, RangeLimits};
@@ -124,7 +125,6 @@ use rustc_span::source_map::SourceMap;
 use rustc_span::symbol::{Ident, Symbol, kw};
 use rustc_span::{InnerSpan, Span, sym};
 use rustc_target::abi::Integer;
-use visitors::Visitable;
 
 use crate::consts::{ConstEvalCtxt, Constant, mir_to_const};
 use crate::higher::Range;

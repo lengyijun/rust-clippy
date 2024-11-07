@@ -2,6 +2,7 @@
 #![warn(rust_2018_idioms, unused_lifetimes)]
 #![allow(unused_extern_crates)]
 
+use crate::test_utils::IS_RUSTC_TEST_SUITE;
 use cargo_metadata::Message;
 use cargo_metadata::diagnostic::{Applicability, Diagnostic};
 use clippy_config::ClippyConfiguration;
@@ -12,7 +13,6 @@ use pulldown_cmark::{Options, Parser, html};
 use rinja::Template;
 use rinja::filters::Safe;
 use serde::Deserialize;
-use test_utils::IS_RUSTC_TEST_SUITE;
 use ui_test::custom_flags::Flag;
 use ui_test::custom_flags::rustfix::RustfixMode;
 use ui_test::spanned::Spanned;
