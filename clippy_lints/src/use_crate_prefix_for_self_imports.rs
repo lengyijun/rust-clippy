@@ -44,12 +44,11 @@ pub struct UseCratePrefixForSelfImports {
 
 impl EarlyLintPass for UseCratePrefixForSelfImports {
     fn check_crate(&mut self, cx: &EarlyContext<'_>, _: &ast::Crate) {
-        let files = cx.sess().source_map().files();
-
         let Some(trim_to_src) = cx.sess().opts.working_dir.local_path() else {
             return;
         };
 
+        let files = cx.sess().source_map().files();
         for file in files.iter() {
             if let FileName::Real(name) = &file.name
                 && let Some(lp) = name.local_path()
