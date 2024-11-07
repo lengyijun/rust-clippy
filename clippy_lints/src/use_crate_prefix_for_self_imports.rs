@@ -1,14 +1,14 @@
 use clippy_utils::diagnostics::span_lint_and_sugg;
-use clippy_utils::source::{snippet, snippet_opt};
-use rustc_ast::{Crate, Expr, ExprKind, Item, ItemKind, MacroDef, ModKind, Ty, TyKind, UseTreeKind, ast};
-use rustc_data_structures::fx::{FxHashMap, FxHashSet, FxIndexSet};
+use clippy_utils::source::snippet_opt;
+use rustc_ast::{Item, ItemKind, ast};
+use rustc_data_structures::fx::FxHashSet;
 use rustc_errors::Applicability;
-use rustc_lint::{EarlyContext, EarlyLintPass, Level, LintContext};
-use rustc_session::{declare_lint_pass, impl_lint_pass};
+use rustc_lint::{EarlyContext, EarlyLintPass, LintContext};
+use rustc_session::impl_lint_pass;
+use rustc_span::FileName;
 use rustc_span::def_id::LOCAL_CRATE;
-use rustc_span::{FileName, SourceFile, Span, SyntaxContext};
-use std::ffi::{OsStr, OsString};
-use std::path::{Component, Path};
+use std::ffi::OsString;
+use std::path::Path;
 
 declare_clippy_lint! {
     /// ### What it does
