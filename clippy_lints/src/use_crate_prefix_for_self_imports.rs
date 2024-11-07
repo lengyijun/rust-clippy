@@ -5,8 +5,8 @@ use rustc_data_structures::fx::FxHashSet;
 use rustc_errors::Applicability;
 use rustc_lint::{EarlyContext, EarlyLintPass, LintContext};
 use rustc_session::impl_lint_pass;
-use rustc_span::FileName;
 use rustc_span::def_id::LOCAL_CRATE;
+use rustc_span::{FileName, RealFileName};
 use std::ffi::OsString;
 use std::path::Path;
 
@@ -74,6 +74,16 @@ impl EarlyLintPass for UseCratePrefixForSelfImports {
     }
 
     fn check_item(&mut self, cx: &EarlyContext<'_>, item: &Item) {
+        let FileName::Real(RealFileName::LocalPath(p)) = cx.sess().source_map().span_to_filename(item.span) else {
+            return;
+        };
+        let Some(file_name) = p.file_name() else {
+            return;
+        };
+        if file_name == "mod.rs" {
+            return;
+        }
+
         if let ItemKind::Use(use_tree) = &item.kind {
             if let Some(x) = use_tree.prefix.segments.first() {
                 if self.mod_set.contains(&OsString::from(x.ident.name.as_str())) {
