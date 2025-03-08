@@ -88,7 +88,7 @@ pub(super) fn check<'tcx>(
                 );
             } else if let ExprKind::Index(_, index, _) = parent.kind {
                 let mut app = Applicability::MachineApplicable;
-                let snip = snippet_with_applicability(cx, index.span, "??", &mut app);
+                let snip = snippet_with_applicability(cx, index.span, "_", &mut app);
                 span_lint_and_sugg(
                     cx,
                     NEEDLESS_COLLECT,
